@@ -18,5 +18,5 @@ C-SUAS is not a one-size-fits-all problem. Solutions are constrained by:
 ## Strategic Roadmap
 - **Phase 1**: Framework Initialization & Asset Taxonomy (Current).
 - **Phase 2**: Requirements Mapping & Modular Architecture Definitions.
-- **Phase 3**: Performance Modeling & Acquisition Template Integration.
+- **Phase 3**: Performance Modeling & IDIQ Template Integration.
 - **Phase 4**: Pilot Implementation (e.g., Airfield Protection Demo).
