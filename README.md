@@ -19,6 +19,7 @@ This repository provides a modular systems engineering approach to tailoring Cou
 - **[03-architecture/](file:///Users/kevinkelly/workspace/counterSUAS/03-architecture/)**: SE models for C2 integration and system-of-systems interaction.
 - **[04-analysis/](file:///Users/kevinkelly/workspace/counterSUAS/04-analysis/)**: Performance modeling, risk analysis, and geographical constraint templates.
 - **[05-acquisition/](file:///Users/kevinkelly/workspace/counterSUAS/05-acquisition/)**: Procurement guides, IDIQ templates, and integrator management.
+- **[06-innovation/](file:///Users/kevinkelly/workspace/counterSUAS/06-innovation/)**: Technology trajectory and strategies for evolving capabilities.
 
 ## Key Principles
 - **Early Identification**: Maximizing "left-of-launch" and early-flight detection.

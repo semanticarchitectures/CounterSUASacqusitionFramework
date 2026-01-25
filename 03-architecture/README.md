@@ -12,3 +12,10 @@ The Counter-SUAS SE Framework utilizes a modular "Plug-and-Play" architecture:
 - **Airport Config**: High-fidelity detection, low-collateral effectors, integrated with civilian ATC.
 - **Convoy Config**: Low-SWaP (Size, Weight, and Power) sensors, mobile C2, self-protection emphasis.
 - **City Config**: High sensor density, complex RF environment handling, automated deconfliction.
+
+## Software Engineering
+- **[Software Development Plan](./software-development-plan.md)**: Executable modeling approach, data formats, and prototype-to-production workflow.
+
+## System Modeling
+- **[System Model Specification](./system-model.md)**: Generic system model, components, and requirements.
+- **[SysML v2 Model](./system-model.sysml)**: Reference model in SysML v2 syntax.

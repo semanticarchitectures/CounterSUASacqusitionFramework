@@ -10,7 +10,7 @@ This framework links technical requirements directly to contract actions.
 - **Lifecycle Management**: SE support for upgrades and maintenance across the IDIQ vehicle as threats evolve.
 
 ## Resources
-- [IDIQ Task Order Templates]
-- [Common System Requirements Document (CSRD)]
-- [Integrator Prequalification Criteria]
-- [Cost Estimating Framework](file:///Users/kevinkelly/workspace/counterSUAS/05-acquisition/cost-estimating-framework.md)
+- [IDIQ Task Order Template](./task-order-template.md)
+- [Common System Requirements Document (CSRD)](../02-requirements/common-system-requirements.md)
+- [Integrator Prequalification Criteria](./integrator-prequalification-criteria.md)
+- [Cost Estimating Framework](./cost-estimating-framework.md)

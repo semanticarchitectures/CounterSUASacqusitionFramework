@@ -15,7 +15,7 @@ The CSRD defines the minimum technical and operational requirements for any Coun
 - **System Latency**: <2 seconds from detection to C2 display.
 
 ## 4. Data & Interface Standards
-- **Standardized Tracks**: All sensors must output tracks in [Standard Logic Format].
+- **Standardized Tracks**: All sensors must output tracks in Standard Logic Format (SLF).
 - **C2 Integration**: Must support integration into the Joint C-SUAS Office (JCO) recommended command and control systems.
 - **Logging**: Mandatory 24/7 logging of all detection, classification, and mitigation actions for post-event analysis.
 
