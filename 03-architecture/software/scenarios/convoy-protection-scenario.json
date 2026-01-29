@@ -1,0 +1,82 @@
+{
+    "scenario_id": "SCEN-002-CONVOY",
+    "name": "Tactical Moving Convoy Defense",
+    "description": "Protection of a 5-vehicle convoy moving through varied terrain with vehicle-mounted C-sUAS components.",
+    "protected_areas": [
+        {
+            "name": "Convoy Bubble",
+            "geometry_type": "MOVING",
+            "coordinates": [
+                {
+                    "lat": 0,
+                    "lon": 0,
+                    "alt": 0,
+                    "timestamp": "2026-06-01T12:00:00Z"
+                }
+            ],
+            "altitude_limits": {
+                "min": 0,
+                "max": 200
+            },
+            "risk_profile": {
+                "radius": 500,
+                "priority": "MISSION-PERSISTENCE"
+            }
+        }
+    ],
+    "sensors": [
+        {
+            "component_id": "LEAD-RF-DETECTOR",
+            "component_type": "RF-FINDER",
+            "position": {
+                "lat": 0,
+                "lon": 0,
+                "alt": 3,
+                "timestamp": "2026-06-01T12:00:00Z"
+            },
+            "parameters": {
+                "coverage": "360-DEG",
+                "sensitivity": "HIGH"
+            }
+        }
+    ],
+    "effectors": [
+        {
+            "component_id": "JAMMER-VEHICLE-03",
+            "component_type": "SMART-JAMMER",
+            "position": {
+                "lat": 0,
+                "lon": 0,
+                "alt": 3,
+                "timestamp": "2026-06-01T12:00:00Z"
+            },
+            "parameters": {
+                "effective_radius": 1000,
+                "power_limit": "LOW-SWAP"
+            }
+        }
+    ],
+    "traffic_profiles": [
+        {
+            "profile_name": "POV-Loitering-Munition",
+            "entity_type": "threat",
+            "trajectory_type": "REACTIVE",
+            "arrival_rate": 2,
+            "parameters": {
+                "speed_range": [
+                    20,
+                    50
+                ]
+            }
+        }
+    ],
+    "rules_of_engagement": {
+        "kinetic_authorized": "EMERGENCY-ONLY",
+        "automatic_jamming": true,
+        "max_collateral_risk": 0.1
+    },
+    "environment_config": {
+        "terrain": "HETEROGENEOUS",
+        "motion_profile": "ROUGH-ROAD"
+    }
+}

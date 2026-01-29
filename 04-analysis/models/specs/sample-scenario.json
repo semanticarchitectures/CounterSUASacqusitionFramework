@@ -1,0 +1,59 @@
+{
+  "version": "1.0",
+  "scenario_id": "airport-demo-001",
+  "protected_regions": [
+    {
+      "id": "region-airfield-1",
+      "name": "Airfield Perimeter",
+      "geometry_type": "polygon",
+      "altitude_floor_m": 0,
+      "altitude_ceiling_m": 500,
+      "risk_profile": {
+        "false_alarm_rate_per_hr": 0.02,
+        "collateral_risk_tolerance": "low"
+      }
+    }
+  ],
+  "sensors": [
+    {
+      "id": "sensor-radar-1",
+      "type": "radar",
+      "location": "tower-1",
+      "max_range_km": 6.0,
+      "base_pd": 0.95,
+      "ref_velocity_mps": 20.0
+    },
+    {
+      "id": "sensor-rf-1",
+      "type": "rf",
+      "location": "hangar-2",
+      "max_range_km": 3.5,
+      "base_pd": 0.85,
+      "ref_velocity_mps": 12.0
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat-1",
+      "trajectory_type": "predetermined",
+      "range_km": 2.0,
+      "orientation_deg": 30,
+      "relative_velocity_mps": 18.0,
+      "clutter_index": 0.2
+    },
+    {
+      "id": "threat-2",
+      "trajectory_type": "dynamic",
+      "range_km": 5.0,
+      "orientation_deg": 70,
+      "relative_velocity_mps": 12.0,
+      "clutter_index": 0.4
+    }
+  ],
+  "policy": {
+    "roe_mode": "human_in_loop",
+    "response_time_max_s": 5,
+    "classification_confidence_min": 0.85
+  }
+}
+

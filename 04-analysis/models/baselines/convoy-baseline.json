@@ -1,0 +1,26 @@
+{
+  "scenario_id": "convoy-demo-001",
+  "tolerance": 0.01,
+  "expected": {
+    "threat_results": [
+      {
+        "id": "threat-1",
+        "pd_max": 0.276
+      },
+      {
+        "id": "threat-2",
+        "pd_max": 0.007
+      },
+      {
+        "id": "threat-3",
+        "pd_max": 0.373
+      }
+    ],
+    "summary": {
+      "pd_mean": 0.219,
+      "pd_min": 0.007,
+      "pd_max": 0.373
+    }
+  }
+}
+

@@ -1,0 +1,136 @@
+{
+    "scenario_id": "SCEN-001-AIRPORT",
+    "name": "International Airport C-sUAS Defense",
+    "description": "High-fidelity simulation of an airport perimeter and approach corridor protection against sUAS swarms and accidental civilian incursions.",
+    "protected_areas": [
+        {
+            "name": "Runway 09L/27R",
+            "geometry_type": "VOLUME",
+            "coordinates": [
+                {
+                    "lat": 38.851,
+                    "lon": -77.037,
+                    "alt": 0,
+                    "timestamp": "2026-06-01T12:00:00Z"
+                },
+                {
+                    "lat": 38.851,
+                    "lon": -77.045,
+                    "alt": 0,
+                    "timestamp": "2026-06-01T12:00:00Z"
+                }
+            ],
+            "altitude_limits": {
+                "min": 0,
+                "max": 500
+            },
+            "risk_profile": {
+                "collateral_tolerance": "LOW",
+                "criticality": "CRITICAL"
+            }
+        },
+        {
+            "name": "Approach Corridor North",
+            "geometry_type": "CORRIDOR",
+            "coordinates": [
+                {
+                    "lat": 38.860,
+                    "lon": -77.037,
+                    "alt": 0,
+                    "timestamp": "2026-06-01T12:00:00Z"
+                },
+                {
+                    "lat": 38.870,
+                    "lon": -77.037,
+                    "alt": 0,
+                    "timestamp": "2026-06-01T12:00:00Z"
+                }
+            ],
+            "altitude_limits": {
+                "min": 100,
+                "max": 3000
+            }
+        }
+    ],
+    "sensors": [
+        {
+            "component_id": "PERIM-RADAR-01",
+            "component_type": "L-BAND-RADAR",
+            "position": {
+                "lat": 38.855,
+                "lon": -77.041,
+                "alt": 10,
+                "timestamp": "2026-06-01T12:00:00Z"
+            },
+            "parameters": {
+                "range_limit": 5000,
+                "scan_rate": 2.0
+            }
+        },
+        {
+            "component_id": "TOWER-EOIR-01",
+            "component_type": "PTZ-EOIR",
+            "position": {
+                "lat": 38.852,
+                "lon": -77.040,
+                "alt": 40,
+                "timestamp": "2026-06-01T12:00:00Z"
+            },
+            "parameters": {
+                "slew_rate": 90,
+                "auto_tracking": true
+            }
+        }
+    ],
+    "effectors": [
+        {
+            "component_id": "TAKEOVER-SYS-01",
+            "component_type": "PROTOCOL-HIJACK",
+            "position": {
+                "lat": 38.852,
+                "lon": -77.040,
+                "alt": 35,
+                "timestamp": "2026-06-01T12:00:00Z"
+            },
+            "parameters": {
+                "success_prob_base": 0.8
+            }
+        }
+    ],
+    "traffic_profiles": [
+        {
+            "profile_name": "Aggressive-Swarm",
+            "entity_type": "threat",
+            "trajectory_type": "STOCHASTIC",
+            "arrival_rate": 5,
+            "parameters": {
+                "speed_range": [
+                    10,
+                    30
+                ],
+                "alt_range": [
+                    50,
+                    200
+                ]
+            }
+        },
+        {
+            "profile_name": "Civilian-Hobbyist",
+            "entity_type": "non_threat",
+            "trajectory_type": "SCRIPTED",
+            "arrival_rate": 1,
+            "parameters": {
+                "clutter_signature": "SMALL-BIRD"
+            }
+        }
+    ],
+    "rules_of_engagement": {
+        "kinetic_authorized": false,
+        "automatic_takeover": true,
+        "min_identification_confidence": 0.95
+    },
+    "environment_config": {
+        "weather": "CLEAR",
+        "rf_noise_floor": -95
+    }
+}

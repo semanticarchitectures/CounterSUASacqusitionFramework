@@ -12,3 +12,6 @@ This directory contains modeling tools and analysis templates.
 - **Geographical Constraint Assessment**: Identifying line-of-sight gaps in urban or mountainous terrain.
 - **RF Spectrum Analysis**: Managing interference with local communications.
 - **Risk Tolerance Matrix**: Balancing protection levels against operational costs and collateral risk.
+
+## Executable Models
+- **[Model Prototypes](./models/README.md)**: Canonical specs, MATLAB stubs, and parity tests.

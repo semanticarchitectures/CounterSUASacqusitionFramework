@@ -1,0 +1,67 @@
+{
+  "version": "1.0",
+  "scenario_id": "convoy-demo-001",
+  "protected_regions": [
+    {
+      "id": "region-convoy-1",
+      "name": "Convoy Corridor",
+      "geometry_type": "corridor",
+      "altitude_floor_m": 0,
+      "altitude_ceiling_m": 300,
+      "risk_profile": {
+        "false_alarm_rate_per_hr": 0.1,
+        "collateral_risk_tolerance": "medium"
+      }
+    }
+  ],
+  "sensors": [
+    {
+      "id": "sensor-radar-1",
+      "type": "radar",
+      "location": "vehicle-1",
+      "max_range_km": 3.0,
+      "base_pd": 0.9,
+      "ref_velocity_mps": 18.0
+    },
+    {
+      "id": "sensor-acoustic-1",
+      "type": "acoustic",
+      "location": "vehicle-2",
+      "max_range_km": 1.5,
+      "base_pd": 0.65,
+      "ref_velocity_mps": 10.0
+    }
+  ],
+  "threats": [
+    {
+      "id": "threat-1",
+      "trajectory_type": "predetermined",
+      "range_km": 1.2,
+      "orientation_deg": 20,
+      "relative_velocity_mps": 14.0,
+      "clutter_index": 0.3
+    },
+    {
+      "id": "threat-2",
+      "trajectory_type": "dynamic",
+      "range_km": 2.5,
+      "orientation_deg": 80,
+      "relative_velocity_mps": 9.0,
+      "clutter_index": 0.5
+    },
+    {
+      "id": "threat-3",
+      "trajectory_type": "dynamic",
+      "range_km": 0.8,
+      "orientation_deg": 45,
+      "relative_velocity_mps": 16.0,
+      "clutter_index": 0.1
+    }
+  ],
+  "policy": {
+    "roe_mode": "auto",
+    "response_time_max_s": 3,
+    "classification_confidence_min": 0.8
+  }
+}
+
