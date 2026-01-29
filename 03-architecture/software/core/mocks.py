@@ -54,9 +54,12 @@ class MockC2(C2Engine):
         for track in tracks:
             if track.classification == EntityType.THREAT and track.classification_confidence > 0.5:
                 # Basic threshold based engagement
+                # In a real system, we'd have weapon-target pairing. 
+                # For this prototype, we'll try to find a takeover or jammer effector.
+                effector_id = "TAKEOVER-SYS-01" # Target our scenario effector
                 tasks.append(EngagementTask(
                     task_id=f"TASK-{track.track_id}",
-                    effector_id="MOCK-EFF-01",
+                    effector_id=effector_id,
                     target_track_id=track.track_id,
                     start_time=world_state.timestamp
                 ))

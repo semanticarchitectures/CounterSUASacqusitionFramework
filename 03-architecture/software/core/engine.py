@@ -3,7 +3,7 @@ import random
 from datetime import datetime, timedelta
 from typing import List, Dict
 from api.interfaces import BaseEntity, BaseSensor, BaseEffector, C2Engine
-from api.schemas import WorldState, EntityState, Position, Velocity, EntityType, Detection, Track, EngagementTask, EngagementStatus
+from api.schemas import WorldState, EntityState, Position, Velocity, EntityType, Detection, Track, EngagementTask, EngagementStatus, ScenarioConfig
 from api.metrics import SimulationMetrics
 
 class SimulationEngine:
@@ -22,6 +22,29 @@ class SimulationEngine:
         self.world_state.entities.append(entity_state)
         if entity_state.entity_type == EntityType.THREAT:
             self.metrics.total_threats += 1
+
+    def load_scenario(self, config: ScenarioConfig, mock_factory=None):
+        """Initialize engine components and environment from a ScenarioConfig."""
+        self.world_state.environment.update(config.environment_config)
+        
+        # In a real system, we'd use a factory to create real/mock components
+        # For the MVP prototype, we'll manually map them using basic mocks if factory is None
+        if mock_factory:
+            mock_factory(self, config)
+        else:
+            # Basic mapping logic for the prototype
+            from .mocks import MockRadar, MockEffector, MockC2
+            
+            for s_cfg in config.sensors:
+                # Map specific types to mocks
+                radar = MockRadar(s_cfg.component_id, s_cfg.position, s_cfg.parameters.get("range_limit", 5000))
+                self.sensors.append(radar)
+            
+            for e_cfg in config.effectors:
+                eff = MockEffector(e_cfg.component_id, e_cfg.parameters.get("success_prob_base", 0.9))
+                self.effectors.append(eff)
+            
+            self.c2_engine = MockC2()
 
     def step(self, delta_t: float):
         """Perform one simulation time step (seconds)."""
