@@ -1,0 +1,186 @@
+{
+    "scenario_id": "SCEN-002-LAX",
+    "name": "LAX International Airport C-sUAS Protection",
+    "description": "Comprehensive defense scenario for LAX, covering the North and South runway complexes and the Tom Bradley International Terminal. Focuses on swarm defense and rogue sUAS protocol hijacking.",
+    "protected_areas": [
+        {
+            "name": "North Complex (Runways 24L/24R)",
+            "geometry_type": "VOLUME",
+            "coordinates": [
+                {
+                    "lat": 33.946,
+                    "lon": -118.435,
+                    "alt": 0,
+                    "timestamp": "2026-06-01T12:00:00Z"
+                },
+                {
+                    "lat": 33.954,
+                    "lon": -118.398,
+                    "alt": 0,
+                    "timestamp": "2026-06-01T12:00:00Z"
+                }
+            ],
+            "altitude_limits": {
+                "min": 0,
+                "max": 1000
+            },
+            "risk_profile": {
+                "collateral_tolerance": "LOW",
+                "criticality": "CRITICAL"
+            }
+        },
+        {
+            "name": "South Complex (Runways 25L/25R)",
+            "geometry_type": "VOLUME",
+            "coordinates": [
+                {
+                    "lat": 33.933,
+                    "lon": -118.426,
+                    "alt": 0,
+                    "timestamp": "2026-06-01T12:00:00Z"
+                },
+                {
+                    "lat": 33.944,
+                    "lon": -118.382,
+                    "alt": 0,
+                    "timestamp": "2026-06-01T12:00:00Z"
+                }
+            ],
+            "altitude_limits": {
+                "min": 0,
+                "max": 1000
+            },
+            "risk_profile": {
+                "collateral_tolerance": "LOW",
+                "criticality": "CRITICAL"
+            }
+        },
+        {
+            "name": "Main Terminal Area",
+            "geometry_type": "CIRCLE",
+            "coordinates": [
+                {
+                    "lat": 33.944,
+                    "lon": -118.408,
+                    "alt": 0,
+                    "timestamp": "2026-06-01T12:00:00Z"
+                }
+            ],
+            "radius": 1200,
+            "altitude_limits": {
+                "min": 0,
+                "max": 500
+            }
+        }
+    ],
+    "sensors": [
+        {
+            "component_id": "LAX-NORTH-RADAR",
+            "component_type": "L-BAND-RADAR",
+            "position": {
+                "lat": 33.950,
+                "lon": -118.410,
+                "alt": 25,
+                "timestamp": "2026-06-01T12:00:00Z"
+            },
+            "parameters": {
+                "range_limit": 6000,
+                "scan_rate": 2.5
+            }
+        },
+        {
+            "component_id": "LAX-SOUTH-RADAR",
+            "component_type": "L-BAND-RADAR",
+            "position": {
+                "lat": 33.938,
+                "lon": -118.410,
+                "alt": 25,
+                "timestamp": "2026-06-01T12:00:00Z"
+            },
+            "parameters": {
+                "range_limit": 6000,
+                "scan_rate": 2.5
+            }
+        },
+        {
+            "component_id": "TBIT-TOWER-EOIR",
+            "component_type": "PTZ-EOIR",
+            "position": {
+                "lat": 33.943,
+                "lon": -118.410,
+                "alt": 45,
+                "timestamp": "2026-06-01T12:00:00Z"
+            },
+            "parameters": {
+                "slew_rate": 120,
+                "auto_tracking": true
+            }
+        }
+    ],
+    "effectors": [
+        {
+            "component_id": "LAX-TAKEOVER-NORTH",
+            "component_type": "PROTOCOL-HIJACK",
+            "position": {
+                "lat": 33.950,
+                "lon": -118.410,
+                "alt": 40,
+                "timestamp": "2026-06-01T12:00:00Z"
+            },
+            "parameters": {
+                "success_prob_base": 0.85
+            }
+        },
+        {
+            "component_id": "LAX-JAMMER-SOUTH",
+            "component_type": "RF-JAMMER",
+            "position": {
+                "lat": 33.938,
+                "lon": -118.410,
+                "alt": 30,
+                "timestamp": "2026-06-01T12:00:00Z"
+            },
+            "parameters": {
+                "effective_range": 3000,
+                "power_level": "HIGH"
+            }
+        }
+    ],
+    "traffic_profiles": [
+        {
+            "profile_name": "Pacific-Inbound-Swarm",
+            "entity_type": "threat",
+            "trajectory_type": "STOCHASTIC",
+            "arrival_rate": 8,
+            "parameters": {
+                "speed_range": [
+                    15,
+                    40
+                ],
+                "alt_range": [
+                    50,
+                    300
+                ],
+                "heading_bias": 83
+            }
+        },
+        {
+            "profile_name": "Urban-Clutter",
+            "entity_type": "non_threat",
+            "trajectory_type": "RANDOM",
+            "arrival_rate": 3,
+            "parameters": {
+                "clutter_signature": "MEDIUM-BIRD"
+            }
+        }
+    ],
+    "rules_of_engagement": {
+        "kinetic_authorized": false,
+        "automatic_takeover": true,
+        "min_identification_confidence": 0.90
+    },
+    "environment_config": {
+        "weather": "FOGGY",
+        "rf_noise_floor": -90
+    }
+}
